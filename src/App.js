@@ -8,7 +8,7 @@ function App() {
     <div className="App">
 
         <Routes>
-          <Route path="/admin/dashboard" element={<Masterlayout />} />
+          <Route path="/admin" name="Admin" render={(props)=>  <Masterlayout {...props} />} />
       </Routes>
 
     </div>

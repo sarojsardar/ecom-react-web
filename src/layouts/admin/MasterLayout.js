@@ -5,6 +5,9 @@ import '../../assets/admin/js/scripts'
 import Footer from "./Footer";
 import Navbar from './Navbar';
 import Sidebar from "./Sidebar";
+import { Routes, Route, Navigate} from 'react-router-dom';
+
+import routes from "../../routes/routes";
 
 const Masterlayout = () => {
   return (
@@ -18,7 +21,25 @@ const Masterlayout = () => {
    
       <div id="layoutSidenav_content">
         <main>
-             <h1>Master Layouts</h1>
+        <Routes>
+         {routes.map((route, idx) => {
+           return (
+            route.component && (
+              <Route 
+                key={idx}
+                path={route.path}
+                exact={routes.exact}
+                name={route.name}
+                render= {(props) => (
+                 <route.component {...props} />
+                )}
+              />
+            )
+           )
+         })}
+         <Navigate from="admin" to="/admin/dashboard" />
+        </Routes>
+
         </main>
          <Footer />
      </div>
